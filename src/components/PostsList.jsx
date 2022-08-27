@@ -7,16 +7,20 @@ export default function PostsList({ posts }) {
 
   const handleVisibility = ({ target, observer }) => {
     observer.unobserve(target)
+    
+    target.classList.remove("-translate-x-6", "opacity-0")
 
-    setPostsToShow( prev => prev + 6 > posts.length ? posts.length : prev + 6)
+    if (target.id === "lastPost") {
+      setPostsToShow( prev => prev + 6 > posts.length ? posts.length : prev + 6)
+    }
   }
 
-  const { setElements } = useObserver({ rootMargin: "-30px", match: "/posts", onlyOnShow: true, handleVisibility })
+  const { setElements } = useObserver({ rootMargin: "-10px", match: "/posts", onlyOnShow: true, handleVisibility })
 
   useEffect(() => {
-    const lastPost = document.getElementById("lastPost")
-    
-    setElements([lastPost])
+    const elements = document.querySelectorAll("article[name='postLink']")
+
+    setElements(elements)
   }, [postsToShow])
 
   const postsElements = posts.slice(0, postsToShow).map( ( post, index) => {

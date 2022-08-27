@@ -12,12 +12,12 @@ export default function AuthorsListPosts() {
 
   if (isLoading) return <Loading />
   if (!posts.length) return <NotFound />
-
+  console.log(posts)
   return (
     <>
     <h2 className="mx-auto text-xl text-white">{userData.username} has {posts.length} posts published</h2>
     <section className="flex flex-col sm:grid gap-x-16 gap-y-20 sm:grid-cols-big-postsCards mx-auto">
-      {posts.map(post => <PostCard key={post.id} post={post} />)}
+      {posts.map(post => <PostCard show={true} key={post.id} post={post} />)}
     </section>
     </>
   )

@@ -22,7 +22,7 @@ function App() {
     setIsVisible(!isIntersecting)
   }
 
-  useOberver({match: match?.pathname, rootMargin: "-80% 0px 0px 0px", handleVisibility, refElement, one: true})
+  useOberver({match: match?.pathname, rootMargin: "-85% 0px 0px 0px", handleVisibility, refElement, one: true})
 
   return (
     <div className="bg-[rgb(8,8,8)] min-h-[100vh]">

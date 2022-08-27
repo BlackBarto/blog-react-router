@@ -1,17 +1,17 @@
 import { BsArrowBarLeft } from "react-icons/bs";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import getOnePost from "../services/getOnePost"
+import fetchResources from "../services/fetchResources"
 import usePosts from "../hooks/usePosts"
 import AuthorsLink from "../components/AuthorsLink"
 import Loading from "../components/Loading"
 import PostListComments from "../components/PostListComments"
 import PostImage from "../components/PostImage"
-import { imgsArr } from "../services/postsData";
 
 export default function PostDetail() {
   const navigate = useNavigate()
   const { postId } = useParams()
-  const { posts: post, isLoading } = usePosts(() => getOnePost(postId))
+  const url = `https://jsonplaceholder.typicode.com/posts/${postId}`
+  const { posts: post, isLoading } = usePosts(() => fetchResources(url))
 
   if (!post) {
     navigate("/posts", { replace: true })

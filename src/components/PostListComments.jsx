@@ -1,4 +1,4 @@
-import getCommentsOfOnePost from "../services/getCommentsOfOnePost"
+import fetchResources from "../services/fetchResources"
 import usePosts from "../hooks/usePosts"
 import Loading from "./Loading"
 import Comment from "./Comment"
@@ -13,7 +13,8 @@ const CommentsContainer = ({children}) => {
 }
 
 export default function PostComments({postId}) {
-  const {posts: comments, isLoading} = usePosts(() => getCommentsOfOnePost(postId))
+  const url = `https://jsonplaceholder.typicode.com/posts/${postId}/comments`
+  const {posts: comments, isLoading} = usePosts(() => fetchResources(url))
 
   if (isLoading) return <CommentsContainer><Loading /></CommentsContainer>
   if (!comments.length) return <CommentsContainer><h3 className="text-white">No comments yet</h3></CommentsContainer>
