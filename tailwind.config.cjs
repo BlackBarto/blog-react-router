@@ -11,7 +11,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         "postsCards": "repeat(auto-fit, minmax(12rem, 1fr))",
-        "big-postsCards": "repeat(auto-fit, minmax(17rem, 1fr))"
+        "big-postsCards": "repeat(auto-fit, minmax(18rem, 1fr))"
       },
       gridAutoRows: {
         "postsCards": "minmax(18rem, 25rem)"

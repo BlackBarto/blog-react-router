@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import AuthorsLink from "./AuthorsLink"
+import AuthorsLink from "../atoms/AuthorsLink"
 import PostImage from "./PostImage"
 
 export default function PostCard({post: {userId: authorId, title, id}, last, link, show}) {

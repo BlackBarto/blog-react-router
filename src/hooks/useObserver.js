@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function useObserver({ match, rootMargin, onlyOnShow, handleVisibility, refElement, one = false }) {
+export default function useObserver({ match, rootMargin, onlyOnShow, handleVisibility }) {
   const [elements, setElements] = useState([])
   let observer;
 
@@ -15,7 +15,6 @@ export default function useObserver({ match, rootMargin, onlyOnShow, handleVisib
   useEffect(() => {
     if (!match) {
       handleVisibility({ finaly: true })
-      refElement = null
       return
     }
 
@@ -29,9 +28,8 @@ export default function useObserver({ match, rootMargin, onlyOnShow, handleVisib
       elements.forEach(element => observer.observe(element))
     }
 
-    if (one) observer.observe(refElement?.current)
     return () => observer.disconnect()
-  }, [match, elements, refElement?.current])
+  }, [match, elements])
 
   return { setElements, observer, elements }
 }

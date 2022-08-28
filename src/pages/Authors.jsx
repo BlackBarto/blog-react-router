@@ -1,7 +1,9 @@
-import { useParams, Outlet, Link } from "react-router-dom";
+import { useParams, Outlet } from "react-router-dom";
 import fetchResources from "../services/fetchResources"
 import usePosts from "../hooks/usePosts"
 import Loading from "../components/Loading"
+import ColOfData from "../atoms/ColOfData"
+import Options from "../atoms/Options"
 
 const AuthorsContainer = ({children}) => {
   return (
@@ -24,36 +26,19 @@ export default function Authors() {
   return (
     <AuthorsContainer>
       <header className="flex flex-col items-center gap-4 w-full justify-start">
-        <img className="rounded-full h-32 w-32" src={`https://randomuser.me/api/portraits/${authorId % 3 === 0 ? "men" : "women"}/${authorId >= 100 ? authorId % 100 : authorId}.jpg`} alt={`Image of ${userData.name}`} title={userData.name}
-        />
+        <img className="rounded-full h-32 w-32" src={`https://randomuser.me/api/portraits/${authorId % 3 === 0 ? "men" : "women"}/${authorId >= 100 ? authorId % 100 : authorId}.jpg`} alt={`Image of ${userData.name}`} title={userData.name} />
         <p className="grow flex justify-start items-center flex-wrap gap-8">
-          <span className="flex items-start flex-col">
-            <span className="text-white text-lg underline">Name</span>
-            <span className="text-gray-200">{userData.name}</span>
-          </span>
-          <span className="flex items-start flex-col">
-            <span className="text-white text-lg underline">Username</span>
-            <span className="text-gray-200">{userData.username}</span>
-          </span>
-          <span className="flex items-start flex-col">
-            <span className="text-white text-lg underline">Email</span>
-            <span className="text-gray-200">{userData.email}</span>
-          </span>
+          <ColOfData data={userData.name} title="Name" />
+          <ColOfData data={userData.username} title="Username" />
+          <ColOfData data={userData.email} title="Email" />
         </p>
       </header>
-      <main className="flex flex-col gap-y-12 mt-6 w-full">
+      <div className="flex flex-col gap-y-12 mt-6 w-full">
         <section className="bg-gray-900 w-full max-w-[20rem] mx-auto rounded-md">
-          <ul className="flex flex-wrap gap-y-4 py-4">
-            <li className="grow text-center">
-              <Link className="inline-block transition-colors duration-300 hover:bg-blue-300 rounded-lg hover:text-black text-white py-2 px-4" to="posts">Posts</Link>
-            </li>
-            <li className="grow text-center">
-              <Link className="inline-block transition-colors duration-300 hover:bg-blue-300 rounded-lg hover:text-black text-white py-2 px-4" to="about">About</Link>
-            </li>
-          </ul>
+          <Options options={[{text: "Posts", link: "posts"}, {text: "About", link: "about"}]}/>
         </section>
         <Outlet context={{authorId, userData}}/>
-      </main>
+      </div>
     </AuthorsContainer>
   )
 

@@ -1,13 +1,6 @@
 import { useOutletContext } from "react-router-dom"
-
-const AuthorsAboutFieldData = ({title, value}) => {
-  return (
-    <article className="flex gap-4 items-center">
-      <h3 className="text-white text-lg">{title}</h3>
-      <p>{value}</p>
-    </article>
-  )
-}
+import AuthorsAboutFieldData from "../atoms/AuthorsAboutFieldData"
+import AuthorsAboutHeadersOfData from "../atoms/AuthorsAboutHeadersOfData"
 
 export default function AuthorsAbout() {
   const { userData: { id, ...validData } } = useOutletContext()
@@ -15,33 +8,27 @@ export default function AuthorsAbout() {
     if (typeof b[1] === "object") return -1
     return 1
   })
-  console.log(validData)
-  const childs = []
-  let i = 0
+
+  const childs = [<AuthorsAboutHeadersOfData key="Initial title" title="General Information" />]
 
   while (queue.length) {
     const [key, value] = queue.shift()
-    i++
-
-    if (i === 100) {
-      console.log("infinite loop")
-      break
-    }
 
     if (typeof value === "object") {
-      childs.push(<h3 key={key + "-title-of-data-section"}>{key}</h3>)
+      childs.push(<AuthorsAboutHeadersOfData key={key + "-field-header-of-at-" + Date.now()} title={key} />)
+
       queue.unshift(...Object.entries(value))
       continue
     }
 
     childs.push(<AuthorsAboutFieldData key={key + value + "-field-of-data"} title={key} value={value} />)
-
   }
 
   return (
-    <section>
-      <h3>Some data</h3>
-      {childs}
-    </section>
+    <table className="w-[80%] min-w-max-content max-w-[900px] mx-auto">
+      <tbody>
+        {childs}
+      </tbody>
+    </table>
   )
 }

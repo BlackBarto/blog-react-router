@@ -1,4 +1,4 @@
-import { Routes, Route, useMatch } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header"
 import Home from "./pages/Home"
 import About from "./pages/About"
@@ -8,25 +8,18 @@ import Authors from "./pages/Authors"
 import AuthorsListPosts from "./components/AuthorsListPosts"
 import AuthorsAbout from "./components/AuthorsAbout"
 import Contact from "./pages/Contact"
-import useOberver from "./hooks/useObserver"
-import { useState, useRef } from "react";
+import { useRef } from "react";
 
 function App() {
-  const match = useMatch({
-    path: "/",
-    end: true
-  })
   const refElement = useRef(null)
-  const [isVisible, setIsVisible] = useState(!match)
-  const handleVisibility = ({isIntersecting}) => {
-    setIsVisible(!isIntersecting)
-  }
 
-  useOberver({match: match?.pathname, rootMargin: "-85% 0px 0px 0px", handleVisibility, refElement, one: true})
+  const enableObserver = (setElements) => {
+    setElements([refElement?.current])
+  }
 
   return (
     <div className="bg-[rgb(8,8,8)] min-h-[100vh]">
-      <Header isVisible={isVisible || !match} />
+      <Header enableObserver={enableObserver} />
       <Routes>
         <Route path="/" element={<Home refElement={refElement} />}/>
         <Route path="/about" element={<About />}/>

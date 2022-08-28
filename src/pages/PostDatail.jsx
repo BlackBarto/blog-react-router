@@ -2,7 +2,7 @@ import { BsArrowBarLeft } from "react-icons/bs";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import fetchResources from "../services/fetchResources"
 import usePosts from "../hooks/usePosts"
-import AuthorsLink from "../components/AuthorsLink"
+import AuthorsLink from "../atoms/AuthorsLink"
 import Loading from "../components/Loading"
 import PostListComments from "../components/PostListComments"
 import PostImage from "../components/PostImage"
