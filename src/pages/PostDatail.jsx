@@ -27,14 +27,12 @@ export default function PostDetail() {
       </aside>
       <main className="flex flex-col bg-slate-600 rounded-lg gap-y-8 items-center max-w-[900px] w-full py-6">
         {isLoading ? <div className="py-8"><Loading /></div> : (
-          <>
           <div className="flex flex-col gap-y-4 items-center w-[93%] sm:w-4/5">
             <h2 className="font-bold text-xl sm:text-3xl text-white">{post.title}</h2>
             <p className="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea officiis non earum. Totam soluta animi nisi, consequuntur perspiciatis ex impedit voluptate? Quos ipsa labore officia rerum iste et magni! Facilis.</p>
             <PostImage className="w-full h-auto object-contain" id={post.id} title={post.title} />
             <p className="text-white text-md sm:text-lg">{post.body} Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, cupiditate accusamus ipsam inventore harum ut veritatis dicta ipsum nihil vero excepturi nisi ad vitae, praesentium error nobis quidem, dolorum placeat! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis eveniet exercitationem atque consequatur reprehenderit facere laboriosam reiciendis non fugiat quae corrupti deserunt voluptatibus, enim, nesciunt commodi assumenda, quam inventore excepturi.</p>
           </div>
-          </>
         )}
       </main>
       <PostListComments postId={postId} />
