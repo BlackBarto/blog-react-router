@@ -22,7 +22,7 @@ export default function Header({enableObserver}) {
   }, [match?.pathname])
 
   return (
-    <header className={`${ isVisible ? "bg-blue-300" : "bg-transparent"} fixed w-full top-0 z-50 min-h-[4.5rem] transition-colors duration-300 p-3 bg-blue-300 flex justify-between px-6 gap-x-4 gap-y-2 sm:flex-wrap items-center`}>
+    <header className={`${ isVisible ? "bg-blue-300" : "bg-transparent"} fixed w-full top-0 z-40 min-h-[4.5rem] transition-colors duration-300 p-3 bg-blue-300 flex justify-between px-6 gap-x-4 gap-y-2 sm:flex-wrap items-center`}>
         <h1 className={`${ isVisible ? "text-black" : "text-white"} sm:grow text-xl sm:text-2xl text-center`}>Blog of Informatic</h1>
         <Nav isVisible={isVisible}/>
       </header>

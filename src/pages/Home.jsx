@@ -46,7 +46,7 @@ export default function Home({refElement}) {
       <Card className="shadow-lg shadow-gray-600" data-index="2" visibility={!!visiblesSections["2"]} img={whatAreOurWay} direction="rtl">
         <h3 className="self-center text-xl">What do you found?</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, cupiditate accusamus ipsam inventore harum ut veritatis dicta ipsum nihil vero excepturi nisi ad vitae, praesentium error nobis quidem, dolorum placeat! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis eveniet exercitationem atque consequatur reprehenderit facere laboriosam reiciendis non fugiat quae corrupti deserunt voluptatibus, enim, nesciunt commodi assumenda, quam inventore excepturi.</p>
-        <LinkToPage to="/post" text="See our posts here!"/>
+        <LinkToPage to="/posts" text="See our posts here!"/>
       </Card>
     </main>
   </>

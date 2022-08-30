@@ -33,7 +33,7 @@ function App() {
         </Route>
         <Route path="/contact" element={<Contact />}/>
       </Routes>
-      <footer className="mt-16 bg-blue-300 gap-4 p-5 flex flex-wrap justify-center items-center">
+      <footer className="relative z-10 mt-16 bg-blue-300 gap-4 p-5 flex flex-wrap justify-center items-center">
         <address className="grow text-center text-gray-800">Page made by Arnoldo Gonzalez</address>
         <ul className="grow flex flex-wrap justify-center gap-x-6">
           <li><a className="min-w-max-content text-sm sm:text-base block text-black py-2 rounded px-3 border-blue-700 border-2 transition-colors duration-300 hover:bg-blue-700 hover:text-white" href="">My Github</a></li>

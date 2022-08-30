@@ -11,7 +11,7 @@ export default function Nav({isVisible}) {
   }
 
   return (
-    <nav className={`${isNavActive ? "bg-blue-700 text-white transtion-colors duration-200" : ""} sm:grow flex p-2 rounded-full justify-center transition duration-300`}>
+    <nav className={`${isNavActive ? "bg-blue-700 sm:bg-transparent text-white transtion-colors duration-200" : ""} sm:grow flex p-2 rounded-full justify-center transition duration-300`}>
       <button onClick={handleNavActive} className={`flex text-center sm:hidden ${ isVisible ? "text-black" : "text-white"} font-bold text-2xl`}>
         <FaBars className={`${isNavActive ? "hidden" : "block"}`} />
         <CgClose className={`${!isNavActive ? "hidden" : "block text-white"}`} />
