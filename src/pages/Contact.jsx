@@ -3,19 +3,23 @@ import NormalInput from "../atoms/NormalInput";
 import SubmitInput from "../atoms/SubmitInput";
 import TextArea from "../atoms/TextArea";
 import SucessModal from "../components/SucessModal";
+import LoadingSection from "../components/LoadingSection";
 import sendMessage from "../services/sendMessage";
 import useForm from "../hooks/useForm";
 
 export default function Contact() {
-  const {handleSubmit, isLoading, handleClose, showMessage} = useForm(sendMessage)
+  const {handleSubmit, isLoading, handleClose, showMessage, errors} = useForm(sendMessage)
+
+  if (errors.length) console.log(errors)
 
   return (
     <>
-    {showMessage && <SucessModal body="Thanks for send me a message, i will contest you as quikly as its posible" title="Sending message" handleClose={handleClose}/>}
+    {showMessage && <SucessModal body="Thanks for send me a message, I will get back to you" handleClose={handleClose}/>}
     <img src={heroImage} alt="Contact us" className="fixed inset-0 h-full object-cover opacity-50" />
     <main className="relative z-10 opacity-90 pt-32 min-h-body space-y-6">
       <h2 className="text-center mx-auto text-4xl font-bold text-white">Contact me!</h2>
-      <form className="w-[90%] rounded-xl mx-auto max-w-[600px] flex flex-col items-start pt-6 pb-8 pl-6 pr-4 gap-y-2 bg-slate-600" onSubmit={handleSubmit}>
+      <form className="relative w-[90%] rounded-xl mx-auto max-w-[600px] flex flex-col items-start pt-6 pb-8 pl-6 pr-4 gap-y-2 bg-slate-600" onSubmit={handleSubmit}>
+        {isLoading && <LoadingSection />}
         <label htmlFor="name" className="pl-2 text-white">Name</label>
         <NormalInput type="text" required={true} name="name" placeholder="Enter your name" />
         <label htmlFor="email" className="pl-2 pt-2 text-white">Email</label>

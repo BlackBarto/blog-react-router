@@ -1,13 +1,21 @@
-import ModalContainer from "../atoms/ModalContainer";
+import MessageContainer from "../atoms/MessageContainer";
 import { CgClose } from "react-icons/cg";
+import { useEffect } from "react";
 
-export default function SucessModal({title, body, handleClose}) {
+export default function SucessModal({body, handleClose}) {
+  useEffect(() => {
+    const timeOut = setTimeout(handleClose, 5000)
+
+    return () => clearTimeout(timeOut)
+  }, [])
+
   return (
-    <ModalContainer>
-      <button onClick={handleClose} className="absolute top-4 right-4 bg-red-700 border-red-700 text-white border-4 rounded-full text-xl transition-colors duration-300 hover:bg-red-300 hover:border-red-300 hover:text-red-700 focus:border-red-300 focus:text-red-700 focus:bg-red-300"><CgClose /></button>
-      <h2 className="font-bold text-green-700 uppercase text-3xl">Sucess {title}</h2>
-      <p className="text-black text-xl">{body}</p>
-      <button onClick={handleClose} className="flex gap-x-2 items-center bg-red-700 border-red-700 text-white border-4 rounded-xl transition-colors py-2 px-4 duration-300 hover:bg-transparent hover:text-red-700 focus:text-red-700 focus:bg-transparent">Close <CgClose /></button>
-    </ModalContainer>
+    <MessageContainer className="border-green-700">
+      <div className="grow flex flex-wrap items-center gap-x-4">
+        <h4 className="font-bold text-green-700 sm:mx-0 uppercase text-lg sm:text-xl">Sucess</h4>
+        <p className="text-black w-[240px] grow text-base sm:text-lg">{body}</p>
+      </div>
+      <button onClick={handleClose} className="bg-red-700 border-red-700 text-white border-2 rounded-full text-xl p-1 transition-colors duration-300 hover:bg-red-300 hover:text-red-700 focus:text-red-700 focus:bg-red-300"><CgClose /></button>
+    </MessageContainer>
   )
 }

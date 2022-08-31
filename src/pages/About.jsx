@@ -23,7 +23,7 @@ export default function About() {
         </p>
         <LinkToPage to="/posts" text="View our posts here!" />
       </Card>
-      <Card direction="rtl" img={secondmage} visibility={true}>
+      <Card direction="ltr" img={secondmage} visibility={true}>
         <h3 className="sm:text-3xl text-2xl mx-auto">In my <TextDecoration className="decoration-red-700">hearth</TextDecoration></h3>
         <p className="pb-4">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit nihil, debitis minus natus blanditiis nulla asperiores explicabo eveniet fuga quo nisi, tempora sequi officiis ipsam modi placeat eos doloremque fugiat. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui nisi dolor accusamus, aspernatur recusandae, error hic excepturi consequatur ex culpa temporibus sapiente quidem labore in iure libero rem repellat iusto!

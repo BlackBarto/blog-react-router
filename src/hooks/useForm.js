@@ -21,17 +21,18 @@ export default function useForm(callback) {
       return setErrors(errors)
     }
 
+    if (showMessage) setShowMessage(false)
     target.reset()
     setIsLoading(true)
     
     callback(data)
       .then(() => {
-        setIsLoading(false)
         setShowMessage(true)
       })
       .catch(error => {
         setErrors([error])
-      });
+      })
+      .finally(() => setIsLoading(false));
     
     return errorsOnFetch
   }
