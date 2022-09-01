@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import fetchResources from "../services/fetchResources"
 import usePosts from "../hooks/usePosts"
 import AuthorsLink from "../atoms/AuthorsLink"
-import Loading from "../components/Loading"
+import Loading from "../atoms/Loading";
 import PostListComments from "../components/PostListComments"
 import PostImage from "../components/PostImage"
 

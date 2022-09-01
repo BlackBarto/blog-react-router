@@ -1,20 +1,27 @@
 import heroImage from "../assets/software_developer.jpg";
 import NormalInput from "../atoms/NormalInput";
 import SubmitInput from "../atoms/SubmitInput";
+import OneMessageContainer from "../atoms/OneMessageContainer";
 import TextArea from "../atoms/TextArea";
-import SucessModal from "../components/SucessModal";
+import Message from "../components/Message";
+import MessagesList from "../components/MessagesList";
 import LoadingSection from "../components/LoadingSection";
 import sendMessage from "../services/sendMessage";
 import useForm from "../hooks/useForm";
 
 export default function Contact() {
-  const {handleSubmit, isLoading, handleClose, showMessage, errors} = useForm(sendMessage)
+  const {handleSubmit, handleClose, state} = useForm(sendMessage)
 
-  if (errors.length) console.log(errors)
+  const {isLoading, messages, errors} = state
 
   return (
     <>
-    {showMessage && <SucessModal body="Thanks for send me a message, I will get back to you" handleClose={handleClose}/>}
+    { (!!messages && !errors) && (
+    <OneMessageContainer>
+      <Message title="Sucess" color="green" body="Thanks for send me a message, I will get back to you" handleClose={handleClose}/>
+    </OneMessageContainer>
+    )}
+    {!!messages && !!errors && <MessagesList handleClose={handleClose} errors={errors} />}
     <img src={heroImage} alt="Contact us" className="fixed inset-0 h-full object-cover opacity-50" />
     <main className="relative z-10 opacity-90 pt-32 min-h-body space-y-6">
       <h2 className="text-center mx-auto text-4xl font-bold text-white">Contact me!</h2>

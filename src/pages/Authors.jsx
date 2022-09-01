@@ -1,7 +1,8 @@
 import { useParams, Outlet } from "react-router-dom";
 import fetchResources from "../services/fetchResources"
 import usePosts from "../hooks/usePosts"
-import Loading from "../components/Loading"
+import Loading from "../atoms/Loading";
+import NotFound from "../atoms/NotFound";
 import ColOfData from "../atoms/ColOfData"
 import Options from "../atoms/Options"
 
@@ -22,6 +23,10 @@ export default function Authors() {
   const {posts: userData, isLoading} = usePosts(() => fetchResources(userUrl))
 
   if (isLoading) return <AuthorsContainer><Loading/></AuthorsContainer>
+
+  if (!isLoading && userData.length === 0) {
+    return <AuthorsContainer><NotFound name="Author" /></AuthorsContainer>
+  }
 
   return (
     <AuthorsContainer>

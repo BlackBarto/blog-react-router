@@ -1,6 +1,6 @@
 import fetchResources from "../services/fetchResources"
 import usePosts from "../hooks/usePosts"
-import Loading from "./Loading"
+import Loading from "../atoms/Loading"
 import Comment from "./Comment"
 
 const CommentsContainer = ({children}) => {

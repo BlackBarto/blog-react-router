@@ -4,6 +4,7 @@ import heroImage from "../assets/software_developer.jpg";
 import homeImage from "../assets/coding-g642719bbc_1920.jpg";
 import whatAreUs from "../assets/persona_usando_computadora_2.jpg";
 import whatAreOurWay from "../assets/computadora_con_codigo.jpg";
+import whoStayWithMe from "../assets/code-ge54f4caaa_1920.jpg";
 import useObserver from "../hooks/useObserver";
 import { useEffect, useState } from "react";
 
@@ -47,6 +48,12 @@ export default function Home({refElement}) {
         <h3 className="self-center text-xl">What do you found?</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, cupiditate accusamus ipsam inventore harum ut veritatis dicta ipsum nihil vero excepturi nisi ad vitae, praesentium error nobis quidem, dolorum placeat! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis eveniet exercitationem atque consequatur reprehenderit facere laboriosam reiciendis non fugiat quae corrupti deserunt voluptatibus, enim, nesciunt commodi assumenda, quam inventore excepturi.</p>
         <LinkToPage to="/posts" text="See our posts here!"/>
+      </Card>
+
+      <Card className="shadow-lg shadow-gray-600" data-index="3" visibility={!!visiblesSections["3"]} img={whoStayWithMe} direction="ltr">
+        <h3 className="self-center text-xl">Who stay with me?</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, cupiditate accusamus ipsam inventore harum ut veritatis dicta ipsum nihil vero excepturi nisi ad vitae, praesentium error nobis quidem, dolorum placeat!</p>
+        <LinkToPage to="/contact" text="Contact us here!"/>
       </Card>
     </main>
   </>

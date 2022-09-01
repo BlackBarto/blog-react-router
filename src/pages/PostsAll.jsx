@@ -1,7 +1,7 @@
 import fetchResources from "../services/fetchResources";
 import usePosts from "../hooks/usePosts"
-import Loading from "../components/Loading"
-import NotFound from "../components/NotFound"
+import Loading from "../atoms/Loading";
+import NotFound from "../atoms/NotFound"
 import PostsList from "../components/PostsList"
 import { useEffect } from "react";
 

@@ -18,7 +18,7 @@ function App() {
   }
 
   return (
-    <div className="bg-[rgb(8,8,8)] min-h-[100vh]">
+    <>
       <Header enableObserver={enableObserver} />
       <Routes>
         <Route path="/" element={<Home refElement={refElement} />}/>
@@ -40,7 +40,7 @@ function App() {
           <li><a className="min-w-max-content text-sm sm:text-base block text-black py-2 rounded px-3 border-blue-700 border-2 transition-colors duration-300 hover:bg-blue-700 hover:text-white" href="">Source code</a></li>
         </ul>
       </footer>
-    </div>
+    </>
   )
 }
 

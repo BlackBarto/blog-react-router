@@ -1,8 +1,8 @@
 import fetchResources from "../services/fetchResources"
 import usePosts from "../hooks/usePosts"
 import PostCard from "./PostCard"
-import Loading from "./Loading"
-import NotFound from "./NotFound"
+import Loading from "../atoms/Loading";
+import NotFound from "../atoms/NotFound"
 import { useOutletContext } from "react-router-dom"
 
 export default function AuthorsListPosts() {

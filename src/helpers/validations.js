@@ -5,7 +5,7 @@ const validationsObj = {
 }
 
 export function ValidateName(name) {
-  const regExp = /<script>|<\/script>|\$|\&|\`|\^|\[|\]|\{|\}|\d/
+  const regExp = /<script>|<\/script>|<|>|\\|\/|\||\$|\&|\`|\^|\[|\]|\{|\}|\d/
 
   return !regExp.test(name) && name.length > 2
 }
@@ -17,7 +17,7 @@ export function ValidateEmail(email) {
 }
 
 export function ValidateMessage(message) {
-  const regExp = /<script>|<\/script>|\$|\&|\`|\^|\[|\]|\{|\}/
+  const regExp = /<script>|<\/script>|<|>|\\|\/|\||\$|\&|\`|\^|\[|\]|\{|\}/
 
   return !regExp.test(message) && message.length > 2
 }

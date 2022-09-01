@@ -7,4 +7,5 @@ export default function sendMessage(data) {
     },
     body: JSON.stringify(data)
   })
+    .catch(err => err)
 }
