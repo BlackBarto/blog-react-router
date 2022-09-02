@@ -28,6 +28,8 @@ export default function Authors() {
     return <AuthorsContainer><NotFound name="Author" /></AuthorsContainer>
   }
 
+  document.title = `About of ${userData.name}`
+
   return (
     <AuthorsContainer>
       <header className="flex flex-col items-center gap-4 w-full justify-start">

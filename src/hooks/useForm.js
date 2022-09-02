@@ -1,13 +1,10 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import ValidateData from "../helpers/validations";
-import { reducer, INITIAL_STATE, ACTIONS } from "../reducers/formReducer";
+import { ACTIONS } from "../reducers/messagesReducer";
 
-export default function useForm(callback) {
-  const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
-
-  const handleClose = () => {
-    dispatch(ACTIONS.CLOSE_MESSAGE())
-  }
+export default function useForm(callback, dispatch) {
+  //const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -16,23 +13,26 @@ export default function useForm(callback) {
     const data = Object.fromEntries(new FormData(target))
     const {isValid, errors} = ValidateData(data)
 
-    dispatch(ACTIONS.NORMALIZE_DATA())
-    
+    if (!isLoading) setIsLoading(false)
+
     if(!isValid) {
       return dispatch(ACTIONS.INVALID_DATA(errors))
     }
-    
+
     target.reset()
-    dispatch(ACTIONS.FETCH_DATA())
+    setIsLoading(true)
     
     callback(data)
       .then(() => {
-        dispatch(ACTIONS.SUCCES_FETCH())
+        dispatch(ACTIONS.SUCESS())
       })
-      .catch(error => {
-        dispatch(ACTIONS.ERROR_ON_FETCH(error))
+      .catch(() => {
+        dispatch(ACTIONS.ERROR())
+      })
+      .finally(() => {
+        setIsLoading(false)
       });
   }
 
-  return {handleSubmit, handleClose, state}
+  return {handleSubmit, isLoading}
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import OneMessageContainer from "../atoms/OneMessageContainer";
+import MessagesPlace from "../atoms/MessagesPlace";
 import Message from "./Message";
 
 const BODIES_OF_MESSAGES = {
@@ -13,9 +13,9 @@ export default function MessagesList({errors, handleClose}) {
 
   if (!Array.isArray(errors)) {
     return (
-      <OneMessageContainer>
+      <MessagesPlace>
         <Message title="Failed" body="Fail to send the message, please, try again in a while" color="red" handleClose={handleClose} />
-      </OneMessageContainer>
+      </MessagesPlace>
     )
   }
 
@@ -27,10 +27,10 @@ export default function MessagesList({errors, handleClose}) {
   }
 
   return (
-    <OneMessageContainer>
+    <MessagesPlace>
       {errors.filter( (e) => !showedMessages[e]).map( (element, i) => (
-        <Message duration={20000} delay={600 * i} handleClose={handleOneClose} id={element} title="Invalid Data" key={element + "-key"} body={BODIES_OF_MESSAGES[element]} color="yellow"/>
+        <Message duration={30000 + (800 * i)} delay={600 * i} handleClose={handleOneClose} id={element} title="Invalid Data" key={element + "-key"} body={BODIES_OF_MESSAGES[element]} color="yellow"/>
       ))}
-    </OneMessageContainer>
+    </MessagesPlace>
   )
 }

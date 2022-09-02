@@ -2,7 +2,7 @@ import MessageContainer from "../atoms/MessageContainer";
 import { CgClose } from "react-icons/cg";
 import { useEffect, useState } from "react";
 
-export default function Message({title, body, handleClose, color, id = null, duration = 5000, delay = 0}) {
+export default function Message({title, body, handleClose, color, id = null, duration = 10000, delay = 0}) {
   const [hide, setHide] = useState(true)
 
   const animateHide = () => {

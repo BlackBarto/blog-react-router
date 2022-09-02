@@ -1,28 +1,19 @@
 import heroImage from "../assets/software_developer.jpg";
 import NormalInput from "../atoms/NormalInput";
 import SubmitInput from "../atoms/SubmitInput";
-import OneMessageContainer from "../atoms/OneMessageContainer";
 import TextArea from "../atoms/TextArea";
-import Message from "../components/Message";
-import MessagesList from "../components/MessagesList";
 import LoadingSection from "../components/LoadingSection";
 import sendMessage from "../services/sendMessage";
 import useForm from "../hooks/useForm";
 
-export default function Contact() {
-  const {handleSubmit, handleClose, state} = useForm(sendMessage)
+export default function Contact({dispatch}) {
+  const {handleSubmit, isLoading} = useForm(sendMessage, dispatch)
 
-  const {isLoading, messages, errors} = state
+  document.title = "Contact"
 
   return (
     <>
-    { (!!messages && !errors) && (
-    <OneMessageContainer>
-      <Message title="Sucess" color="green" body="Thanks for send me a message, I will get back to you" handleClose={handleClose}/>
-    </OneMessageContainer>
-    )}
-    {!!messages && !!errors && <MessagesList handleClose={handleClose} errors={errors} />}
-    <img src={heroImage} alt="Contact us" className="fixed inset-0 h-full object-cover opacity-50" />
+    <img src={heroImage} alt="Contact us" className="fixed inset-0 h-full w-full object-cover opacity-50" />
     <main className="relative z-10 opacity-90 pt-32 min-h-body space-y-6">
       <h2 className="text-center mx-auto text-4xl font-bold text-white">Contact me!</h2>
       <form className="relative w-[90%] rounded-xl mx-auto max-w-[600px] flex flex-col items-start pt-6 pb-8 pl-6 pr-4 gap-y-2 bg-slate-600" onSubmit={handleSubmit}>

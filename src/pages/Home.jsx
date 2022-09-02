@@ -20,7 +20,9 @@ export default function Home({refElement}) {
     observer.unobserve(target)
   }
 
-  const {setElements} = useObserver({match: "/home", rootMargin: "-100px", handleVisibility, onlyOnShow: true})
+  document.title = "Blog of Informatic"
+
+  const {setElements} = useObserver({match: "/home", rootMargin: "10px", handleVisibility, onlyOnShow: true})
 
   useEffect(() => {
     const elements = document.querySelectorAll("main section[data-index]")

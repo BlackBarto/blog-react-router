@@ -2,6 +2,7 @@ import { BsArrowBarLeft } from "react-icons/bs";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import fetchResources from "../services/fetchResources"
 import usePosts from "../hooks/usePosts"
+import ScrollToTop from "../atoms/ScrollToTop";
 import AuthorsLink from "../atoms/AuthorsLink"
 import Loading from "../atoms/Loading";
 import PostListComments from "../components/PostListComments"
@@ -17,7 +18,15 @@ export default function PostDetail() {
     navigate("/posts", { replace: true })
   }
 
+  if (!isLoading) {
+    document.title = "Post " + (post.title.length > 10 ? post.title.substring(0, 11) + "..." : post.title)
+  } else {
+    document.title = "Posts"
+  }
+
   return (
+    <>
+    <ScrollToTop />
     <div className="min-h-body mx-auto flex flex-col gap-y-8 w-[95%] h-[95%] items-center pt-32 md:pt-24">
       <aside className="rounded-3xl flex flex-wrap gap-y-4 content-center items-center py-3 px-5 max-w-[1100px] w-full bg-white">
         <div className="grow sm:grow-0 sm:mr-auto flex">
@@ -37,5 +46,6 @@ export default function PostDetail() {
       </main>
       <PostListComments postId={postId} />
     </div>
+    </>
   )
 }

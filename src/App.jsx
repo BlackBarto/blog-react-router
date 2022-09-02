@@ -5,20 +5,24 @@ import About from "./pages/About"
 import PostsAll from "./pages/PostsAll"
 import PostDatail from "./pages/PostDatail"
 import Authors from "./pages/Authors"
+import MessagesSection from "./components/MessagesSection";
 import AuthorsListPosts from "./components/AuthorsListPosts"
 import AuthorsAbout from "./components/AuthorsAbout"
 import Contact from "./pages/Contact"
-import { useRef } from "react";
+import { reducer, ACTIONS, INITIAL_STATE} from "./reducers/messagesReducer"
+import { useReducer, useRef } from "react";
 
 function App() {
   const refElement = useRef(null)
-
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
+  
   const enableObserver = (setElements) => {
     setElements([refElement?.current])
   }
 
   return (
     <>
+      <MessagesSection state={state} ACTIONS={ACTIONS} dispatch={dispatch} />
       <Header enableObserver={enableObserver} />
       <Routes>
         <Route path="/" element={<Home refElement={refElement} />}/>
@@ -31,7 +35,7 @@ function App() {
           <Route path="posts" element={<AuthorsListPosts />}/>
           <Route path="about" element={<AuthorsAbout />}/>
         </Route>
-        <Route path="/contact" element={<Contact />}/>
+        <Route path="/contact" element={<Contact dispatch={dispatch} />}/>
       </Routes>
       <footer className="relative z-10 mt-16 bg-blue-300 gap-4 p-5 flex flex-wrap justify-center items-center">
         <address className="grow text-center text-gray-800">Page made by Arnoldo Gonzalez</address>

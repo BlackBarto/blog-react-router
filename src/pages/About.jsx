@@ -5,8 +5,7 @@ import firstImage from "../assets/coding-g642719bbc_1920.jpg";
 import secondmage from "../assets/code-ge54f4caaa_1920.jpg";
 
 export default function About() {
-  console.log(window)
-  window.scrollTo(0, -(window.screenY) )
+  document.title = "About"
 
   return (
     <>

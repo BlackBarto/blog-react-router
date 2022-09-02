@@ -4,20 +4,20 @@ import AuthorsAboutHeadersOfData from "../atoms/AuthorsAboutHeadersOfData"
 
 export default function AuthorsAbout() {
   const { userData: { id, ...validData } } = useOutletContext()
-  const queue = Object.entries(validData).sort( (a, b) => {
+  const stack = Object.entries(validData).sort( (a, b) => {
     if (typeof b[1] === "object") return -1
     return 1
   })
 
   const childs = [<AuthorsAboutHeadersOfData key="Initial title" title="General Information" />]
 
-  while (queue.length) {
-    const [key, value] = queue.shift()
+  while (stack.length) {
+    const [key, value] = stack.shift()
 
     if (typeof value === "object") {
       childs.push(<AuthorsAboutHeadersOfData key={key + "-field-header-of-at-" + Date.now()} title={key} />)
 
-      queue.unshift(...Object.entries(value))
+      stack.unshift(...Object.entries(value))
       continue
     }
 
