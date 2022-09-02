@@ -33,6 +33,7 @@ export default function Authors() {
   return (
     <AuthorsContainer>
       <header className="flex flex-col items-center gap-4 w-full justify-start">
+        <h1 className="font-bold underline decoration-2 text-2xl text-white">About of {userData.name}</h1>
         <img className="rounded-full h-32 w-32" src={`https://randomuser.me/api/portraits/${authorId % 3 === 0 ? "men" : "women"}/${authorId >= 100 ? authorId % 100 : authorId}.jpg`} alt={`Image of ${userData.name}`} title={userData.name} />
         <p className="grow flex justify-start items-center flex-wrap gap-8">
           <ColOfData data={userData.name} title="Name" />

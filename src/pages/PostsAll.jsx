@@ -14,7 +14,7 @@ export default function PostsAll() {
     <>
     <ScrollToTop/>
     <main className="pt-28 min-h-body space-y-6">
-      <h2 className="text-center text-4xl font-bold mb-6 text-white">Posts</h2>
+      <h1 className="text-center text-4xl font-bold mb-6 text-white">Posts</h1>
       {isLoading
       ? <div className="pt-12"><Loading /></div> 
       : !posts.length 

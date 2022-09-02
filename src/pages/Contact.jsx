@@ -15,7 +15,7 @@ export default function Contact({dispatch}) {
     <>
     <img src={heroImage} alt="Contact us" className="fixed inset-0 h-full w-full object-cover opacity-50" />
     <main className="relative z-10 opacity-90 pt-32 min-h-body space-y-6">
-      <h2 className="text-center mx-auto text-4xl font-bold text-white">Contact me!</h2>
+      <h1 className="text-center mx-auto text-4xl font-bold text-white">Contact me!</h1>
       <form className="relative w-[90%] rounded-xl mx-auto max-w-[600px] flex flex-col items-start pt-6 pb-8 pl-6 pr-4 gap-y-2 bg-slate-600" onSubmit={handleSubmit}>
         {isLoading && <LoadingSection />}
         <label htmlFor="name" className="pl-2 text-white">Name</label>

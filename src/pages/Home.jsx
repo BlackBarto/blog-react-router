@@ -33,7 +33,7 @@ export default function Home({refElement}) {
   <>
     <section ref={refElement} className="relative flex flex-col sm:flex-row gap-12 flex-wrap items-center sm:items-start justify-evenly min-h-[100vh] w-full pt-24 sm:pt-36 pb-12 px-6 bg-black">
     	<article className="relative z-10 backdrop-blur flex rounded-xl p-6 w-ful sm:w-1/2 max-w-[800px] sm:max-w-[500px] flex-col items-start gap-y-6 sm:gap-y-12">
-        <h2 className="text-white font-bold text-4xl px-2 md:text-6xl mt-6 text-center sm:text-left">Welcom to my <b className="text-blue-700 underline decoration-8">blog</b></h2>
+        <h1 className="text-white font-bold text-4xl px-2 md:text-6xl mt-6 text-center sm:text-left">Welcom to my <b className="text-blue-700 underline decoration-8">blog</b></h1>
         <p className="text-gray-300 text-lg p-4">Programing the <b className="text-blue-700 underline decoration-2">future</b> with us!. Line by line, post by post we want to fix all the bugs there are in the world </p>
       </article>
       <img src={homeImage} alt="This is my dream, passion, etc" className="relative z-10 h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] rounded-full object-cover"/>
