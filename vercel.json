@@ -1,5 +1,11 @@
 {
   "redirects": [
-	{ "source": "/((?!.)*)", "destination": "/" }
+	{ "source": "/about", "destination": "/" },
+	{ "source": "/posts", "destination": "/" },
+	{ "source": "/posts/:postId", "destination": "/" },
+	{ "source": "/authors/:authorsId", "destination": "/" },
+	{ "source": "/authors/:authorsId/posts", "destination": "/" },
+	{ "source": "/authors/:authorsId/about", "destination": "/" },
+	{ "source": "/contact", "destination": "/" },
    ]
 }
