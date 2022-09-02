@@ -25,11 +25,10 @@ export default function useForm(callback, dispatch) {
     callback(data)
       .then(() => {
         dispatch(ACTIONS.SUCESS())
+        setIsLoading(false)
       })
       .catch(() => {
         dispatch(ACTIONS.ERROR())
-      })
-      .finally(() => {
         setIsLoading(false)
       });
   }
