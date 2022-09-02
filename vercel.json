@@ -6,6 +6,6 @@
 	{ "source": "/authors/:authorsId", "destination": "/" },
 	{ "source": "/authors/:authorsId/posts", "destination": "/" },
 	{ "source": "/authors/:authorsId/about", "destination": "/" },
-	{ "source": "/contact", "destination": "/" },
+	{ "source": "/contact", "destination": "/" }
    ]
 }
